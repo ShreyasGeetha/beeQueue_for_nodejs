@@ -1,0 +1,14 @@
+A few regularly encountered use cases for task queue are:
+1. polling of a job - to check whether a value is updated or not. For instance to check who is the largest contributor to github every 10 minutes
+2. data caching is scenario two where task queues can be used extensively. A database query running too long, can be cached enabled by task queues
+3. To handle tasks asynchronously
+4. error handling is relatively easy.
+
+There are certain limitations as well when it comes to handling task queues:
+1. Their order of execution cannot be guessed at all. For instance, if one a big billion day sale - the one who first claims the deal should be able to grab the merchandise instead the one who came last get's processed that would be a mishap. So where there is synchrous actions are required we cannot use it.
+2. Due to network issue certain times the same job can be executed twice
+3. Chances of resource limitation can be more as it grows in size or if the job runs for an extremely longer time
+4. Ramp up issues with long running tasks
+5. if the execution time is fixed for each queue, queue backlog will be an issue
+6.There can be backoff errors from the server when overly loaded due to which queues might have to slow down execution until resolved
+
